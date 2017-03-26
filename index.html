@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" id="../img/octavian.jpg">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/jpg" href="img/tictactoe.jpg" />
+	<title> Tic|Tac|Toe </title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<h1> Tic Tac Toe</h1>
+	<div id="container">
+		<center>
+
+			<P ID="status" class="turns"> X's Turn </P>
+
+			<INPUT class="game-button" TYPE="BUTTON" ID="0_0" VALUE=" " ONCLICK="squareclicked (this);">
+			<INPUT class="game-button" TYPE="BUTTON" ID="1_0" VALUE=" " ONCLICK="squareclicked (this);">
+			<INPUT class="game-button" TYPE="BUTTON" ID="2_0" VALUE=" " ONCLICK="squareclicked (this);">
+			<BR>
+			<INPUT class="game-button" TYPE="BUTTON" ID="0_1" VALUE=" " ONCLICK="squareclicked (this);">
+			<INPUT class="game-button" TYPE="BUTTON" ID="1_1" VALUE=" " ONCLICK="squareclicked (this);">
+			<INPUT class="game-button" TYPE="BUTTON" ID="2_1" VALUE=" " ONCLICK="squareclicked (this);">
+			<BR>
+			<INPUT class="game-button" TYPE="BUTTON" ID="0_2" VALUE=" " ONCLICK="squareclicked (this);">
+			<INPUT class="game-button" TYPE="BUTTON" ID="1_2" VALUE=" " ONCLICK="squareclicked (this);">
+			<INPUT class="game-button" TYPE="BUTTON" ID="2_2" VALUE=" " ONCLICK="squareclicked (this);">
+			<BR>
+
+
+			<div class="clearfix"></div>
+
+			<INPUT class="new-game-button" TYPE="BUTTON" ID="NEWGAME" VALUE="New Game" ONCLICK="newgame();">
+				
+			<footer>
+				<p>Made By Jessica Palacios</a> 2017. <span>&hearts;</span></p>
+			</footer>
+		</center>
+	</div>
+
+	<script src="js/index.js"></script>
+</body>
+
+</html>

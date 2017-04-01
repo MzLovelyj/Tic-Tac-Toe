@@ -1,125 +1,130 @@
-var xTurn = true;
-var computer = 'O'; // the computer is X
-   var player = 'X'; // you are O
-   var numMoves = 0;
-   var gameOver = false;
-function squareclicked(square)
+////// Varriables ///////
+var human = "X";
+var comp = "O";
+var winner = false;
+var moveCount = 0;
 
-{
-    square.value = 'X';
+
+////// Checking Moves ////////
+function checkChoice() {
+  if(human == "O")
+
+  {
+    comp= "O";
+    compMove();
+
+    return false;
+  } else if (human == "X")
+  {
+    return true;
+  }
 }
 
+checkChoice();
 
-//messages: status
-function squareclicked(square) {
 
-    if (gameOver) {
-        alert('Excuse me The game is already over!');
-        return;
-    }
-    var status = document.getElementById('status');
-    var value = square.value;
-    if (value != 'X' && value != 'O') {
-        // turns
-        if (xTurn) {
-            numMoves++;
-            square.value = 'X';
-            xTurn = false;
-            status.innerHTML = ' O \'s turn ';
-        } else {
-            numMoves++;
-            square.value = 'O';
-            xTurn = true;
-            status.innerHTML = ' X \' s turn ';
-        }
-        var winner = checkWin();
-        if (!winner) {
-            //checking  for draw
-            if (numMoves == 9) {
-                status.innerHTML = 'Tie Game!';
-            }
-        } else
-            gameOver = true;
-    } else
-        alert('That square has already been played.');
+
+// //// Once a user has won this will clear the Board. /////
+function clearBoard() {
+  for(var i = 1; i < 10; i++) {
+    document.getElementById(i).innerHTML = "";
+    moveCount = 0;
+    winner = true;
+  }
+  if(comp == "X")
+  {
+    compMove();
+  }
 }
-//checking squares
-function checkWin() {
-    var gameOver = false;
-    var numMoves = 0;
-    var status = document.getElementById('status');
-    var val0;
-    var val1;
-    var val2;
 
-    // check columns
-    for (var y = 0; y < 3; y++) {
-        val0 = document.getElementById('0_' + y).value;
-        val1 = document.getElementById('1_' + y).value;
-        val2 = document.getElementById('2_' + y).value;
-        if (val0 == 'X' && val1 == 'X' && val2 == 'X') {
-            status.innerHTML = 'X WINS!';
-            return true;
-        } else if (val0 == 'O' && val1 == 'O' && val2 == 'O') {
-            status.innerHTML = 'O WINS!';
-            return true;
-        }
-    }
+/////// Possible wins on the board-table /////////
+function checkWin(table) {
+  var winComb = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
+                 [3, 6, 9], [2, 5, 8], [1, 4, 7],
+                 [1, 5, 9], [3, 5, 7]];
 
-    // check rows
-    for (var x = 0; x < 3; x++) {
-        val0 = document.getElementById(x + '_0').value;
-        val1 = document.getElementById(x + '_1').value;
-        val2 = document.getElementById(x + '_2').value;
-        if (val0 == 'X' && val1 == 'X' && val2 == 'X') {
-            status.innerHTML = 'X WINS!';
-            return true;
-        } else if (val0 == 'O' && val1 == 'O' && val2 == 'O') {
-            status.innerHTML = 'O WINS!';
-            return true;
-        }
-    }
-
-    // check top left to lower right diagonal
-    val0 = document.getElementById('0_0').value;
-    val1 = document.getElementById('1_1').value;
-    val2 = document.getElementById('2_2').value;
-    if (val0 == 'X' && val1 == 'X' && val2 == 'X') {
-        status.innerHTML = "X WINS!";
-        return true;
-    } else if (val0 == 'O' && val1 == 'O' && val2 == 'O') {
-        status.innerHTML = "O WINS!";
-        return true;
-    }
-
-    // check lower left to top right diagonal
-    val0 = document.getElementById('0_2').value;
-    val1 = document.getElementById('1_1').value;
-    val2 = document.getElementById('2_0').value;
-    if (val0 == 'X' && val1 == 'X' && val2 == 'X') {
-        status.innerHTML = "X WINS!";
-        return true;
-    } else if (val0 == 'O' && val1 == 'O' && val2 == 'O')
+  function lookAt(square) {
+    if(document.getElementById(square[0]).innerHTML == table &&
+       document.getElementById(square[1]).innerHTML == table &&
+       document.getElementById(square[2]).innerHTML == table)
     {
-        status.innerHTML = "O WINS!";
-        return true;
+      return true;
+    } else {
+
+      return false;
     }
+
+  }
+
+  for(var i = 0; i < winComb.length; i++)
+  {
+    if (lookAt(winComb[i]) !== false)
+    {
+      winner = true;
+      alert("Hey we got a winner!! The winner is" + " " + table);
+      clearBoard();
+    }
+  }
 
 }
 
+//////////Checking for Draw//////
+function checkDraw() {
+  var count = 9;
 
-// New Game
-function newgame() {
-    numMoves = 0;
-    gameOver = false;
-    var status = document.getElementById('status');
-
-    xTurn = true;
-    status.innerHTML = 'X\'s turn';
-
-    for (var x = 0; x < 3; x++) {
-        for (var y = 0; y < 3; y++) {
-            document.getElementById(x + '_' + y).value = ' ';
-        }
+  for (var i = 1; i < 10; i++)
+  {
+    if (document.getElementById(i).innerHTML !== "")
+    {
+      count -= 1;
     }
+
+    if (count === 0 && winner === false)
+    {
+      alert("It's a draw!");
+      clearBoard();
+    }
+  }
+
+}
+
+////////// AI Moves //////////
+function compMove() {
+  var move = Math.round(Math.random() * (9 - 1) + 1);
+  var max = 5;
+
+  if(comp == "O")
+  
+
+  {
+    max = 4;
+  }
+
+  do {
+    move = Math.round(Math.random() * (9 - 1) + 1);
+  } while (((document.getElementById(move).innerHTML == "O") ||
+           (document.getElementById(move).innerHTML == "X")) && moveCount < max);
+
+           if(moveCount < max)
+
+           {
+             document.getElementById(move).innerHTML = comp;
+           }
+
+  moveCount += 1;
+
+}
+
+///// function to notify user that the box is already in use. //////
+function square(id) {
+  if(document.getElementById(id).innerHTML == "X" || document.getElementById(id).innerHTML == "O")
+  {
+    alert("That square has been taken.");
+  } else {
+    document.getElementById(id).innerHTML = human;
+    compMove();
+  }
+  checkWin("O");
+  checkWin("X");
+  checkDraw();
 }

@@ -8,6 +8,7 @@
 	<title> Tic|Tac|Toe </title>
 	<link rel="stylesheet" href="css/styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
@@ -15,29 +16,29 @@
 	<h1> Tic Tac Toe</h1>
 	<div id="container">
 		<center>
-
-			<P ID="status" class="turns"> X's Turn </P>
-
-			<INPUT class="game-button" TYPE="BUTTON" ID="0_0" VALUE=" " ONCLICK="squareclicked (this);">
-			<INPUT class="game-button" TYPE="BUTTON" ID="1_0" VALUE=" " ONCLICK="squareclicked (this);">
-			<INPUT class="game-button" TYPE="BUTTON" ID="2_0" VALUE=" " ONCLICK="squareclicked (this);">
-			<BR>
-			<INPUT class="game-button" TYPE="BUTTON" ID="0_1" VALUE=" " ONCLICK="squareclicked (this);">
-			<INPUT class="game-button" TYPE="BUTTON" ID="1_1" VALUE=" " ONCLICK="squareclicked (this);">
-			<INPUT class="game-button" TYPE="BUTTON" ID="2_1" VALUE=" " ONCLICK="squareclicked (this);">
-			<BR>
-			<INPUT class="game-button" TYPE="BUTTON" ID="0_2" VALUE=" " ONCLICK="squareclicked (this);">
-			<INPUT class="game-button" TYPE="BUTTON" ID="1_2" VALUE=" " ONCLICK="squareclicked (this);">
-			<INPUT class="game-button" TYPE="BUTTON" ID="2_2" VALUE=" " ONCLICK="squareclicked (this);">
-			<BR>
-
+			<!-- <P ID="status" class="turns"> X's Turn </P> -->
+			<table>
+				<tr>
+					<td id="1" onclick="square(1)"></td>
+					<td id="2" onclick="square(2)"></td>
+					<td id="3" onclick="square(3)"></td>
+				</tr>
+				<tr>
+					<td id="4" onclick="square(4)"></td>
+					<td id="5" onclick="square(5)"></td>
+					<td id="6" onclick="square(6)"></td>
+				</tr>
+				<tr>
+					<td id="7" onclick="square(7)"></td>
+					<td id="8" onclick="square(8)"></td>
+					<td id="9" onclick="square(9)"></td>
+				</tr>
+			</table>
 
 			<div class="clearfix"></div>
 
-			<INPUT class="new-game-button" TYPE="BUTTON" ID="NEWGAME" VALUE="New Game" ONCLICK="newgame();">
-				
 			<footer>
-				<p>Made By Jessica Palacios</a> 2017. <span>&hearts;</span></p>
+				<p>Made By Jessica Palacios</a> 2017...<span>&hearts;</span></p>
 			</footer>
 		</center>
 	</div>

@@ -1,49 +1,57 @@
-    html {
-        background-image: url("../img/octavian.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100%;
-    }
-    body {
-        color: #efd8f2;
-        font-family: 'Gloria Hallelujah', cursive;
-    }
-    input.game-button {
-        width: 80px;
-        height: 80px;
-        overflow: auto;
-        margin: 10px auto;
-        border-radius: 5px;
-        border: 3px solid white;
-        background-color: #efd8f2;
-        font-size: 30px;
-    }
-    input.new-game-button {
-        font-size: 30px;
-        text-align: center;
-        background-color: #efd8f2;
-        color: black;
-        border: 3px solid white;
-        margin-top: 15px;
-        width: 20%;
-    }
-    input.game-button:hover, input.new-game-button:hover {
-        cursor: pointer;
-        background: #ffffff;
-    }
-    p.turns {
-        font-size: 25px;
-        color: #efd8f2;
-        font-weight: bold;
-    }
-    h1 {
-        font-style: bold;
-        text-align: center;
-        font-size: 45px;
-        outline-color: #efd8f2;
-        ;
-    }
-    .clearfix {
-        clear: both;
-    }
+html {
+    background-image: url("../img/octavian.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+body {
+    color: #efd8f2;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+h1 {
+    font-style: bold;
+    text-align: center;
+    color: #efd8f2;
+    text-shadow: 10px 10px 12px black;
+}
+
+table {
+    padding-top: 30px;
+}
+
+table td {
+    border-radius: 7px;
+    border: solid 4px;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+}
+
+td {
+    font-size: 40px;
+    font-style: bold;
+    font-family: 'Shadows Into Light', cursive;
+    color: #0a1f1c;
+    background-color: #efd8f2;
+    text-shadow: 8px 8px 10px black;
+}
+
+td:hover, {
+    cursor: pointer;
+    background: #f9ecf2;
+}
+
+.clearfix {
+    clear: both;
+}
+
+footer {
+  color: #92ca61;
+    font-size: 25px;
+    text-shadow: 6px 6px 8px black;
+    padding-top: 50px;
+
+}

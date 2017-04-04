@@ -1,130 +1,244 @@
-////// Varriables ///////
-var human = "X";
-var comp = "O";
-var winner = false;
-var moveCount = 0;
+$(document).ready(function() {
+
+    var turn = "X";
+    //Array stores values that will check later for a a winner
+    //9 spots for the board.
+    var turns = ["#", "#", "#", "#", "#", "#", "#", "#", "#"];
+    var computersTurn = "O";
+    //Keeps track if it is the CPU  turn
+    var gameOn = false;
+
+    //this keeps track of the CPU turn. No loop.
+    var count = 0;
+    var usercount = 0;
 
 
-////// Checking Moves ////////
-function checkChoice() {
-  if(human == "O")
+    //change players turn to X and computers to o
+    $('#turnX').click(function() {
+        turn = "O";
+        computersTurn = "X";
+        $("#turnX").removeClass("btn-primary");
+        $("#turnO").addClass("btn-primary");
+        reset();
+    });
 
-  {
-    comp= "O";
-    compMove();
-
-    return false;
-  } else if (human == "X")
-  {
-    return true;
-  }
-}
-
-checkChoice();
+    $('#turnO').click(function() {
+        turn = "X";
+        computersTurn = "O";
+        $("#turnO").removeClass("btn-primary");
+        $("#turnX").addClass("btn-primary");
+        reset();
+    });
 
 
+    function computerTurn() {
+      //this will break the while loop
+        var taken = false;
 
-// //// Once a user has won this will clear the Board. /////
-function clearBoard() {
-  for(var i = 1; i < 10; i++) {
-    document.getElementById(i).innerHTML = "";
-    moveCount = 0;
-    winner = true;
-  }
-  if(comp == "X")
-  {
-    compMove();
-  }
-}
+        while (taken === false && count !== 5) {
+            //computers turn
 
-/////// Possible wins on the board-table /////////
-function checkWin(table) {
-  var winComb = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
-                 [3, 6, 9], [2, 5, 8], [1, 4, 7],
-                 [1, 5, 9], [3, 5, 7]];
+            var cMove = (Math.random() * 10).toFixed();
+            //did *10 since 9 moves total
+            //design of ai to defend
+            //Make the chances
+            // aiturn(turns,turn);
+            if ((turns[0] == turn && turns[1] == turn && turns[2] == '#') || (turns[5] == turn && turns[8] == turn && turns[2] == '#') || (turns[4] == turn && turns[6] == turn && turns[2] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
 
-  function lookAt(square) {
-    if(document.getElementById(square[0]).innerHTML == table &&
-       document.getElementById(square[1]).innerHTML == table &&
-       document.getElementById(square[2]).innerHTML == table)
-    {
-      return true;
-    } else {
+                cMove = 2;
 
-      return false;
+            } else if ((turns[1] == turn && turns[2] == turn && turns[0] == '#') || (turns[3] == turn && turns[6] == turn && turns[0] == '#') || (turns[4] == turn && turns[8] == turn && turns[0] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 0;
+
+            } else if ((turns[3] == turn && turns[0] == turn && turns[6] == '#') || (turns[7] == turn && turns[8] == turn && turns[6] == '#') || (turns[4] == turn && turns[2] == turn && turns[6] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 6;
+
+            } else if ((turns[2] == turn && turns[5] == turn && turns[8] == '#') || (turns[6] == turn && turns[7] == turn && turns[8] == '#') || (turns[0] == turn && turns[4] == turn && turns[8] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 8;
+
+            } else if ((turns[0] == turn && turns[2] == turn && turns[1] == '#') || (turns[4] == turn && turns[7] == turn && turns[1] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 1;
+
+            } else if ((turns[4] == turn && turns[5] == turn && turns[3] == '#') || (turns[0] == turn && turns[6] == turn && turns[3] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 3;
+
+            } else if ((turns[1] == turn && turns[4] == turn && turns[7] == '#') || (turns[6] == turn && turns[8] == turn && turns[7] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 7;
+
+            } else if ((turns[3] == turn && turns[4] == turn && turns[5] == '#') || (turns[2] == turn && turns[8] == turn && turns[5] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 5;
+
+            } else if ((turns[0] == turn && turns[8] == turn && turns[4] == '#') || (turns[1] == turn && turns[7] == turn && turns[4] == '#') || (turns[2] == turn && turns[6] == turn && turns[4] == '#') || (turns[5] == turn && turns[3] == turn && turns[4] == '#') || (turns[8] == turn && turns[0] == turn && turns[4] == '#') || (turns[7] == turn && turns[1] == turn && turns[4] == '#') || (turns[6] == turn && turns[2] == turn && turns[4] == '#') || (turns[3] == turn && turns[5] == turn && turns[4] == '#') || (turns[0] == turn && turns[4] == '#') || (turns[1] == turn && turns[4] == '#') || (turns[2] == turn && turns[4] == '#') || (turns[3] == turn && turns[4] == '#') || (turns[5] == turn && turns[4] == '#') || (turns[6] == turn && turns[4] == '#') || (turns[7] == turn && turns[4] == '#') || (turns[8] == turn && turns[4] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 4;
+
+            }
+
+
+
+
+            //design of ai to defend ends
+            //design of ai to win start------------------------------------------------------
+            if ((turns[0] == computersTurn && turns[1] == computersTurn && turns[2] == '#') || (turns[5] == computersTurn && turns[8] == computersTurn && turns[2] == '#') || (turns[4] == computersTurn && turns[6] == computersTurn && turns[2] == '#')) {
+
+
+                cMove = 2;
+
+            } else if ((turns[1] == computersTurn && turns[2] == computersTurn && turns[0] == '#') || (turns[3] == computersTurn && turns[6] == computersTurn && turns[0] == '#') || (turns[4] == computersTurn && turns[8] == computersTurn && turns[0] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 0;
+
+            } else if ((turns[3] == computersTurn && turns[0] == computersTurn && turns[6] == '#') || (turns[7] == computersTurn && turns[8] == computersTurn && turns[6] == '#') || (turns[4] == computersTurn && turns[2] == computersTurn && turns[6] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 6;
+
+            } else if ((turns[2] == computersTurn && turns[5] == computersTurn && turns[8] == '#') || (turns[6] == computersTurn && turns[7] == computersTurn && turns[8] == '#') || (turns[0] == computersTurn && turns[4] == computersTurn && turns[8] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 8;
+
+            } else if ((turns[0] == computersTurn && turns[2] == computersTurn && turns[1] == '#') || (turns[4] == computersTurn && turns[7] == computersTurn && turns[1] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 1;
+
+            } else if ((turns[4] == computersTurn && turns[5] == computersTurn && turns[3] == '#') || (turns[0] == computersTurn && turns[6] == computersTurn && turns[3] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 3;
+
+            } else if ((turns[1] == computersTurn && turns[4] == computersTurn && turns[7] == '#') || (turns[6] == computersTurn && turns[8] == computersTurn && turns[7] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 7;
+
+            } else if ((turns[3] == computersTurn && turns[4] == computersTurn && turns[5] == '#') || (turns[2] == computersTurn && turns[8] == computersTurn && turns[5] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 5;
+
+            } else if ((turns[0] == computersTurn && turns[8] == computersTurn && turns[4] == '#') || (turns[1] == computersTurn && turns[7] == computersTurn && turns[4] == '#') || (turns[2] == computersTurn && turns[6] == computersTurn && turns[4] == '#') || (turns[5] == computersTurn && turns[3] == computersTurn && turns[4] == '#') || (turns[8] == computersTurn && turns[0] == computersTurn && turns[4] == '#') || (turns[7] == computersTurn && turns[1] == computersTurn && turns[4] == '#') || (turns[6] == computersTurn && turns[2] == computersTurn && turns[4] == '#') || (turns[3] == computersTurn && turns[5] == computersTurn && turns[4] == '#') || (turns[0] == computersTurn && turns[4] == '#') || (turns[1] == computersTurn && turns[4] == '#') || (turns[2] == computersTurn && turns[4] == '#') || (turns[3] == computersTurn && turns[4] == '#') || (turns[5] == computersTurn && turns[4] == '#') || (turns[6] == computersTurn && turns[4] == '#') || (turns[7] == computersTurn && turns[4] == '#') || (turns[8] == computersTurn && turns[4] == '#')) {
+                //  console.log("turns: "+turns[0]+"turn : "+turn+"-turns[2]: "+turns[2]);
+
+                cMove = 4;
+
+            }
+
+            //design of ai to win ends
+
+            var move = $("#" + cMove).text();
+            if (move === "#") {
+                $("#" + cMove).text(computersTurn);
+                taken = true;
+                turns[cMove] = computersTurn;
+            }
+        }
     }
 
-  }
+    function playerTurn(turn, id) {
+        var spotTaken = $("#" + id).text();
+        if (spotTaken === "#") {
+            count++;
+            turns[id] = turn;
+            $("#" + id).text(turn);
 
-  for(var i = 0; i < winComb.length; i++)
-  {
-    if (lookAt(winComb[i]) !== false)
-    {
-      winner = true;
-      alert("Hey we got a winner!! The winner is" + " " + table);
-      clearBoard();
-    }
-  }
 
-}
+            winCondition(turns, turn);
+            if (gameOn === false) {
+                if (count == 5) {
+                    alert("Hey its a TIE!");
+                }
 
-//////////Checking for Draw//////
-function checkDraw() {
-  var count = 9;
+                computerTurn();
+                winCondition(turns, computersTurn);
+                console.log(count);
+            }
 
-  for (var i = 1; i < 10; i++)
-  {
-    if (document.getElementById(i).innerHTML !== "")
-    {
-      count -= 1;
+        }
     }
 
-    if (count === 0 && winner === false)
-    {
-      alert("It's a draw!");
-      clearBoard();
+
+    function winCondition(turnArray, currentTurn) {
+        if (turnArray[0] == currentTurn && turnArray[1] === currentTurn && turnArray[2] === currentTurn) {
+            gameOn = true;
+            console.log("turnArray: " + turnArray + " -currentTurn: " + currentTurn);
+            reset();
+            alert("Player" + currentTurn + "wins!");
+        } else if (turnArray[3] == currentTurn && turnArray[4] === currentTurn && turnArray[5] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins! ");
+        } else if (turnArray[6] == currentTurn && turnArray[7] === currentTurn && turnArray[8] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins!");
+        } else if (turnArray[1] == currentTurn && turnArray[4] === currentTurn && turnArray[7] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins! ");
+        } else if (turnArray[2] == currentTurn && turnArray[5] === currentTurn && turnArray[8] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins! ");
+        } else if (turnArray[0] == currentTurn && turnArray[4] === currentTurn && turnArray[8] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins!");
+        } else if (turnArray[2] == currentTurn && turnArray[4] === currentTurn && turnArray[6] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins! ");
+        } else if (turnArray[0] == currentTurn && turnArray[3] === currentTurn && turnArray[6] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins! ");
+        } else if (turnArray[2] == currentTurn && turnArray[4] === currentTurn && turnArray[6] === currentTurn) {
+            gameOn = true;
+            reset();
+            alert("Player" + currentTurn + "wins!");
+        } else {
+            gameOn = false;
+        }
     }
-  }
 
-}
+    $(".tic").click(function() {
+        //  rito=0;
+        var slot = $(this).attr('id');
+        usercount = slot;
+        // console.log("user turn: "+usercount);
+        playerTurn(turn, slot);
+    });
 
-////////// AI Moves //////////
-function compMove() {
-  var move = Math.round(Math.random() * (9 - 1) + 1);
-  var max = 5;
+//reset after win or lost
+    function reset() {
+        turns = ["#", "#", "#", "#", "#", "#", "#", "#", "#"];
+        count = 0;
+        $(".tic").text("#");
+        gameOn = false;
+    }
 
-  if(comp == "O")
-  
+//Reset  button
+      $('#startfirst').click(function(){
+      reset();
+        $('#result').hide();
+    });
 
-  {
-    max = 4;
-  }
-
-  do {
-    move = Math.round(Math.random() * (9 - 1) + 1);
-  } while (((document.getElementById(move).innerHTML == "O") ||
-           (document.getElementById(move).innerHTML == "X")) && moveCount < max);
-
-           if(moveCount < max)
-
-           {
-             document.getElementById(move).innerHTML = comp;
-           }
-
-  moveCount += 1;
-
-}
-
-///// function to notify user that the box is already in use. //////
-function square(id) {
-  if(document.getElementById(id).innerHTML == "X" || document.getElementById(id).innerHTML == "O")
-  {
-    alert("That square has been taken.");
-  } else {
-    document.getElementById(id).innerHTML = human;
-    compMove();
-  }
-  checkWin("O");
-  checkWin("X");
-  checkDraw();
-}
+});

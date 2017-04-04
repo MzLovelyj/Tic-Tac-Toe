@@ -13,20 +13,19 @@ body {
 
 h1 {
     font-style: bold;
-    text-align: center;
     color: #efd8f2;
     text-shadow: 10px 10px 12px black;
 }
 
 table {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 table td {
     border-radius: 7px;
     border: solid 4px;
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     text-align: center;
 }
 
@@ -39,7 +38,7 @@ td {
     text-shadow: 8px 8px 10px black;
 }
 
-td:hover, {
+td:hover, start:hover {
     cursor: pointer;
     background: #f9ecf2;
 }
@@ -48,10 +47,19 @@ td:hover, {
     clear: both;
 }
 
+.start {
+    font-size: 25px;
+    text-align: center;
+    background-color: #efd8f2;
+    color: black;
+    border: 3px solid black;
+    margin-top: 15px;
+    width: 18%;
+}
+
 footer {
-  color: #92ca61;
+    color: #8bd8cd;
     font-size: 25px;
     text-shadow: 6px 6px 8px black;
-    padding-top: 50px;
-
+    padding-top: 30px;
 }

@@ -13,34 +13,36 @@
 </head>
 
 <body>
-	<h1> Tic Tac Toe</h1>
-	<div id="container">
-		<center>
-			<!-- <P ID="status" class="turns"> X's Turn </P> -->
+	<center>
+		<h1> Tic Tac Toe</h1>
+			<a class="btn btn-primary" id="turnX"> Turn X</a>
+			<a class="btn btn-secondary" id="turnO"> Turn O</a>
+			<div id ="container">
 			<table>
 				<tr>
-					<td id="1" onclick="square(1)"></td>
-					<td id="2" onclick="square(2)"></td>
-					<td id="3" onclick="square(3)"></td>
+					<td class="btn btn-primary tic" id="0">#</td>
+					<td class="btn btn-primary tic" id="1">#</td>
+					<td class="btn btn-primary tic" id="2">#</td>
 				</tr>
 				<tr>
-					<td id="4" onclick="square(4)"></td>
-					<td id="5" onclick="square(5)"></td>
-					<td id="6" onclick="square(6)"></td>
-				</tr>
-				<tr>
-					<td id="7" onclick="square(7)"></td>
-					<td id="8" onclick="square(8)"></td>
-					<td id="9" onclick="square(9)"></td>
+					<td class="btn btn-primary tic" id="3">#</td>
+					<td class="btn btn-primary tic" id="4">#</td>
+					<td class="btn btn-primary tic" id="5">#</td>
+					</tr>
+					<tr>
+					<td class="btn btn-primary tic" id="6">#</td>
+					<td class="btn btn-primary tic" id="7">#</td>
+					<td class="btn btn-primary tic" id="8">#</td>
 				</tr>
 			</table>
-
+<div class="clearfix">
+	<button class="start" id="startfirst">New Game!</button>
+			</div>
 			<div class="clearfix"></div>
-
 			<footer>
 				<p>Made By Jessica Palacios</a> 2017...<span>&hearts;</span></p>
 			</footer>
-		</center>
+	</center>
 	</div>
 
 	<script src="js/index.js"></script>

@@ -3,6 +3,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: black;
     height: 100%;
 }
 
@@ -48,13 +49,12 @@ td:hover, start:hover {
 }
 
 .start {
-    font-size: 25px;
-    text-align: center;
+    font-size: 15px;
     background-color: #efd8f2;
     color: black;
     border: 3px solid black;
     margin-top: 15px;
-    width: 18%;
+    width: 10%;
 }
 
 footer {

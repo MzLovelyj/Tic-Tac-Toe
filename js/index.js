@@ -13,7 +13,7 @@ $(document).ready(function() {
     var usercount = 0;
 
 
-    //change players turn to X and computers to o
+    //change players turn to X and CPU to O
     $('#turnX').click(function() {
         turn = "O";
         computersTurn = "X";
@@ -141,8 +141,7 @@ $(document).ready(function() {
                 cMove = 4;
 
             }
-
-            //design of ai to win ends
+            //design of ai to win end//
 
             var move = $("#" + cMove).text();
             if (move === "#") {
@@ -220,10 +219,8 @@ $(document).ready(function() {
     }
 
     $(".tic").click(function() {
-        //  rito=0;
         var slot = $(this).attr('id');
         usercount = slot;
-        // console.log("user turn: "+usercount);
         playerTurn(turn, slot);
     });
 

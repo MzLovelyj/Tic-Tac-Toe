@@ -51,10 +51,9 @@ td:hover, start:hover {
 .start {
     font-size: 15px;
     background-color: #efd8f2;
-    color: black;
+    color: black;xs
     border: 3px solid black;
     margin-top: 15px;
-    width: 10%;
 }
 
 footer {

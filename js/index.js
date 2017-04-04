@@ -180,39 +180,39 @@ $(document).ready(function() {
             gameOn = true;
             console.log("turnArray: " + turnArray + " -currentTurn: " + currentTurn);
             reset();
-            alert("Player" + currentTurn + "wins!");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[3] == currentTurn && turnArray[4] === currentTurn && turnArray[5] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins! ");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[6] == currentTurn && turnArray[7] === currentTurn && turnArray[8] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins!");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[1] == currentTurn && turnArray[4] === currentTurn && turnArray[7] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins! ");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[2] == currentTurn && turnArray[5] === currentTurn && turnArray[8] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins! ");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[0] == currentTurn && turnArray[4] === currentTurn && turnArray[8] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins!");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[2] == currentTurn && turnArray[4] === currentTurn && turnArray[6] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins! ");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[0] == currentTurn && turnArray[3] === currentTurn && turnArray[6] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins! ");
+            alert("Player" + currentTurn + " " + "wins!");
         } else if (turnArray[2] == currentTurn && turnArray[4] === currentTurn && turnArray[6] === currentTurn) {
             gameOn = true;
             reset();
-            alert("Player" + currentTurn + "wins!");
+            alert("Player" + currentTurn + " " + "wins!");
         } else {
             gameOn = false;
         }
